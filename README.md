@@ -1,4 +1,4 @@
-###Try react-redux.
+### Try react-redux.
 
 #### Installation:
 ##### - Move to the project's folder. 
