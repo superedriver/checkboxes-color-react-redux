@@ -1,10 +1,21 @@
-import { CHANGE_COLOR } from './constants'
+import { CHANGE_SQUARE_COLOR, CHANGE_CIRCLE_COLOR } from './actions'
 
-export function todoApp(state, action) {
+const initialState = {
+  squareColor: '',
+  circleColor: '',
+};
+
+export function todoApp(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_COLOR:
+    case CHANGE_SQUARE_COLOR:
       return {
-        color: action.payload,
+        ...state,
+        squareColor: action.payload,
+      };
+    case CHANGE_CIRCLE_COLOR:
+      return {
+        ...state,
+        circleColor: action.payload,
       };
     default:
       return state

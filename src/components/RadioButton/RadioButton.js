@@ -5,11 +5,11 @@ class RadioButton extends Component {
   static propTypes = {
     name: toBe.string.isRequired,
     color: toBe.string.isRequired,
-    onClick: toBe.func.isRequired,
+    onChange: toBe.func.isRequired,
   };
 
   render() {
-    const { name, color, onClick } = this.props;
+    const { name, color, onChange } = this.props;
 
     return (
       <div className="RadioButton">
@@ -17,7 +17,7 @@ class RadioButton extends Component {
           <input
             type="radio"
             name={name}
-            onClick={onClick}
+            onChange={onChange}
           />
             {color}
         </label>

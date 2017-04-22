@@ -1,55 +1,25 @@
 import React, { PropTypes as toBe, Component } from 'react';
 import './Form.css';
-import RadioButton from '../RadioButton/RadioButton';
-import { changeColor } from '../../actions'
-import { connect } from 'react-redux'
-
+import RadioGroup from '../RadioGroup/RadioGroup';
+import { COLORS } from '../../constants';
 
 class Form extends Component {
   static propTypes = {
-    previousColor: toBe.string.isRequired,
-    changeColor: toBe.func.isRequired
+    onChange: toBe.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick(color) {
-    const { previousColor, changeColor } = this.props;
-
-    return () => {
-      if (previousColor !== color) {
-        changeColor(color);
-      }
-    }
-  }
-
   render() {
-    const redColor = 'red';
-    const greenColor = 'green';
-    const blueColor = 'blue';
-    const groupName = 'colorSquare';
-
+    const { onChange } = this.props;
     return (
       <form className='Form'>
-        <RadioButton name={groupName} color={redColor} onClick={this.onClick(redColor)}/>
-        <RadioButton name={groupName} color={greenColor} onClick={this.onClick(greenColor)}/>
-        <RadioButton name={groupName} color={blueColor} onClick={this.onClick(blueColor)}/>
+        <RadioGroup
+          name='changeColor'
+          onChange={onChange}
+          colors={COLORS}
+        />
       </form>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-    previousColor: state.color
-  }
-);
-
-const mapDispatchToProps = {
-  changeColor,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
-
+export default Form;
